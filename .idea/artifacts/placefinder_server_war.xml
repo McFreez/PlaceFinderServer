@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact name="placefinder.server:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/placefinder_server_war</output-path>
+    <root id="root" />
+  </artifact>
+</component>
