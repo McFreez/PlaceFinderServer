@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "place")
@@ -30,6 +31,12 @@ public class Place {
 
     @Column(name = "longitude", nullable = false)
     private double longitude;
+
+    @OneToMany(mappedBy="place")
+    private Set<Photo> photoSet;
+
+    @OneToMany(mappedBy="place")
+    private Set<Comment> commentSet;
 
     public Place() {
 

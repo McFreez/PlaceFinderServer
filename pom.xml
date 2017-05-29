@@ -16,6 +16,8 @@
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <jta.version>1.1</jta.version>
         <jackson-databind.version>2.9.0.pr3</jackson-databind.version>
+        <json.version>20160810</json.version>
+        <google-http-client.version>1.22.0</google-http-client.version>
     </properties>
     <packaging>war</packaging>
 
@@ -42,6 +44,22 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-databind.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>${google-http-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>${google-http-client.version}</version>
         </dependency>
 
 
