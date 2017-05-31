@@ -9,5 +9,6 @@ public interface CommentService {
 
     List<Comment> getAllForPlace(long placeID);
     Comment save(Comment comment);
-    void removeComment(long id);
+    void removeById(long id);
+    void deleteAllForPlace(long placeID);
 }

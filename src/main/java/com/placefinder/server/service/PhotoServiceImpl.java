@@ -33,7 +33,7 @@ public class PhotoServiceImpl implements PhotoService {
         repository.delete(id);
     }
 
-    public void deleteAllForPlace(long id) {
-        repository.deleteAllForPlace(id);
+    public void deleteAllForPlace(long placeID) {
+        repository.deleteAllForPlace(placeID);
     }
 }

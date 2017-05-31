@@ -1,6 +1,7 @@
 package com.placefinder.server.controller;
 
 import com.placefinder.server.entity.Place;
+import com.placefinder.server.service.CommentService;
 import com.placefinder.server.service.NotificationService;
 import com.placefinder.server.service.PhotoService;
 import com.placefinder.server.service.PlaceService;
@@ -22,6 +23,8 @@ public class PlaceController {
     private NotificationService notificationService;
     @Autowired
     private PhotoService photoService;
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping
     @ResponseBody
@@ -61,6 +64,8 @@ public class PlaceController {
     public void deletePlace(@PathVariable("id") long placeID){
         try {
             photoService.deleteAllForPlace(placeID);
+            commentService.deleteAllForPlace(placeID);
+
         }catch (Exception e){
             e.printStackTrace();
         }

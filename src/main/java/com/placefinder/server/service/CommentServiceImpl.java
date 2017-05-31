@@ -26,8 +26,12 @@ public class CommentServiceImpl implements CommentService{
         //return null;
     }
 
-    public void removeComment(long id) {
+    public void removeById(long id) {
         repository.delete(id);
         //throw new NotImplementedException();
+    }
+
+    public void deleteAllForPlace(long placeID) {
+        repository.deleteAllForPlace(placeID);
     }
 }

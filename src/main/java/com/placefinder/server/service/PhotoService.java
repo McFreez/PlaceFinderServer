@@ -11,5 +11,5 @@ public interface PhotoService {
     List<Photo> getAllForPlace(long placeID);
     Photo save(Photo photo);
     void removeById(long id);
-    void deleteAllForPlace(long id);
+    void deleteAllForPlace(long placeID);
 }

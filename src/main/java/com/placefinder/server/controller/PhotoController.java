@@ -25,9 +25,9 @@ public class PhotoController {
 
     @GetMapping
     @ResponseBody
-    public ResponseEntity<List<Photo>> getAllForPlace(@RequestParam("placeId") long placeID){
+    public ResponseEntity<List<Photo>> getAllForPlace(@RequestParam("placeId") long placeID) {
         List<Photo> photos = photoService.getAllForPlace(placeID);
-        if(photos != null)
+        if (photos != null)
             return new ResponseEntity<List<Photo>>(photos, HttpStatus.OK);
         else
             return new ResponseEntity<List<Photo>>(photos, HttpStatus.NOT_FOUND);
@@ -35,39 +35,37 @@ public class PhotoController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<Photo> savePlace(@RequestBody Photo photo, @RequestParam("placeId") long placeID){
-        if(photo == null)
+    public ResponseEntity<Photo> savePlace(@RequestBody Photo photo, @RequestParam("placeId") long placeID) {
+        if (photo == null)
             return new ResponseEntity<Photo>(photo, HttpStatus.BAD_REQUEST);
 
         List<Photo> allPhotos = photoService.getAllForPlace(placeID);
         int filename;
         boolean uniqueFilename;
-        do{
+        do {
             uniqueFilename = true;
             filename = random.nextInt();
             for (Photo p : allPhotos) {
-                if (p.getFilename().equals(String.valueOf(filename))){
+                if (p.getFilename().equals(String.valueOf(filename))) {
                     uniqueFilename = false;
                     break;
                 }
             }
-        }while (!uniqueFilename);
+        } while (!uniqueFilename);
 
         photo.setFilename(String.valueOf(filename));
         photo.setPlace(placeService.findById(placeID));
 
         Photo savedPhoto = photoService.save(photo);
-        if(savedPhoto != null) {
-            //notificationService.notifyPlaceAdded(savedPlace);
+        if (savedPhoto != null) {
             return new ResponseEntity<Photo>(savedPhoto, HttpStatus.CREATED);
-        }
-        else
+        } else
             return new ResponseEntity<Photo>(savedPhoto, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseBody
-    public void deletePhoto(@PathVariable("id") long photoID){
+    public void deletePhoto(@PathVariable("id") long photoID) {
         photoService.removeById(photoID);
         //notificationService.notifyPlaceDeleted(placeID);
     }
